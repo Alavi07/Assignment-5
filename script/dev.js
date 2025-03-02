@@ -8,6 +8,25 @@ const history = document.getElementById('History');
 let taskNotDone= 6;
 let taskDone=23;
 
+const colors = [
+  "#FF5733", 
+  "#33FF57", 
+  "#3357FF", 
+  "#FF33A1", 
+  "#A133FF", 
+  "#33FFF5",
+  "#F5FF33", 
+];
+
+function colour(){
+  const randCol = Math.floor(Math.random() * colors.length);
+  return colors[randCol];
+}
+
+bgcolor.addEventListener('click',function(){
+  const randCol=colour();
+  document.body.style.backgroundColor=randCol
+});
 
 for(let i=0; i<btncomp.length; i++){
   btncomp[i].addEventListener('click',function()
@@ -30,9 +49,11 @@ for(let i=0; i<btncomp.length; i++){
       const task = btncomp[i].parentElement.parentElement.querySelector("p.font-medium.text-2xl").innerHTML;
     const time = new Date().toLocaleString();
     activity.innerHTML += `<p>${task} completed at ${time}</p><br>`;
-    
+    if(taskNotDone===0)
+      {
+        alert("All Tasks Completed")
+      }
   })
-
 }
 history.addEventListener('click',function(){
   activity.innerHTML=""
